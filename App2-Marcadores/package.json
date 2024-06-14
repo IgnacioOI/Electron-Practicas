@@ -1,0 +1,25 @@
+{
+  "name": "marcadores",
+  "version": "1.0.0",
+  "description": "Gestor de marcadores",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgnacioOI/Electron-Practicas.git"
+  },
+  "keywords": [
+    "Electron"
+  ],
+  "author": "N",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgnacioOI/Electron-Practicas/issues"
+  },
+  "homepage": "https://github.com/IgnacioOI/Electron-Practicas#readme",
+  "devDependencies": {
+    "electron": "^31.0.1"
+  }
+}
