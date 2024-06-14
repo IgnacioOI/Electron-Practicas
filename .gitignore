@@ -40,7 +40,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-
+app1-practica-win32-x64/
 # TypeScript v1 declaration files
 typings/
 
@@ -103,3 +103,4 @@ dist
 # TernJS port file
 .tern-port
 *.ffs_lock
+
