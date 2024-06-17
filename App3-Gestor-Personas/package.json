@@ -1,0 +1,28 @@
+{
+  "name": "app3-gestor-personas",
+  "version": "1.0.0",
+  "description": "Gestor de Personas",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgnacioOI/Electron-Practicas.git"
+  },
+  "keywords": [
+    "Electron"
+  ],
+  "author": "N",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgnacioOI/Electron-Practicas/issues"
+  },
+  "homepage": "https://github.com/IgnacioOI/Electron-Practicas#readme",
+  "devDependencies": {
+    "electron": "^31.0.1"
+  },
+  "dependencies": {
+    "nedb": "^1.8.0"
+  }
+}
