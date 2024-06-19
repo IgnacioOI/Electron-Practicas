@@ -1,5 +1,5 @@
 {
-  "name": "app3-gestor-personas",
+  "name": "app02-gestor-personas",
   "version": "1.0.0",
   "description": "Gestor de Personas",
   "main": "main.js",
@@ -8,19 +8,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IgnacioOI/Electron-Practicas.git"
+    "url": "git+https://github.com/Fhernd/Electron-Curso.git"
   },
   "keywords": [
-    "Electron"
+    "electron",
+    "aplicación",
+    "escritorio",
+    "desktop",
+    "multiplataforma"
   ],
-  "author": "N",
+  "author": "John Ortiz Ordoñez",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/IgnacioOI/Electron-Practicas/issues"
+    "url": "https://github.com/Fhernd/Electron-Curso/issues"
   },
-  "homepage": "https://github.com/IgnacioOI/Electron-Practicas#readme",
+  "homepage": "https://github.com/Fhernd/Electron-Curso#readme",
   "devDependencies": {
-    "electron": "^31.0.1"
+    "electron": "^8.5.5"
   },
   "dependencies": {
     "nedb": "^1.8.0"
