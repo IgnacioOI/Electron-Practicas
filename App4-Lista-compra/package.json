@@ -1,0 +1,22 @@
+{
+  "name": "app4-lista-compra",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgnacioOI/Electron-Practicas.git"
+  },
+  "author": "N",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgnacioOI/Electron-Practicas/issues"
+  },
+  "homepage": "https://github.com/IgnacioOI/Electron-Practicas#readme",
+  "description": "",
+  "devDependencies": {
+    "electron": "^31.0.2"
+  }
+}
