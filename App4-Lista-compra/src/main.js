@@ -6,7 +6,7 @@ let menuPrincipalPLantilla=[
         label: 'Aplicación',
         submenu: [
             {
-                label: 'Acerca de',
+                label: 'Agregar producto',
                 click: () => {
                     crearVentanaAgregarProducto();
                 }
@@ -27,6 +27,24 @@ let menuPrincipalPLantilla=[
         ]
     }
 ];
+function crearVentanaAgregarProducto(){
+    ventanaNuevoProducto=new BrowserWindow({
+        //se dice que el padre es ventana principal
+        parent:ventanaPrincipal,
+        //no permite actuar con la ventana principal
+        modal:true,
+        width: 800,
+        heigth: 600,
+        title: 'Agregar producto',
+        webPreferences:{
+            nodeIntegration:true
+        }
+    });
+    ventanaNuevoProducto.loadFile('src/agregar-producto.html');
+    ventanaNuevoProducto.on('close', function(){
+        ventanaNuevoProducto=null;
+    });
+}
 function crearVentanaPrincipal(){
     ventanaPrincipal= new BrowserWindow({
         width: 800,
