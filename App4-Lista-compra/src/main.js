@@ -1,60 +1,97 @@
-const {app, BrowserWindow, Menu, icpMain, View}=require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
+
 let ventanaPrincipal;
 let ventanaNuevoProducto;
-let menuPrincipalPLantilla=[
+
+// Plantilla del menú principal de la aplicación
+let menuPrincipalPlantilla = [
     {
-        label: 'Aplicación',
+        label: 'Archivo',
         submenu: [
             {
                 label: 'Agregar producto',
-                click: () => {
+                click() {
                     crearVentanaAgregarProducto();
                 }
             },
-                        {
-                label: 'Eliminar producto',
-                click: () => {
-                    ventanaPrincipal.webContents.send('productos:eleminar')
+            {
+                label: 'Eliminar productos',
+                click() {
+                    ventanaPrincipal.webContents.send('productos:eliminar');
                 }
             },
             {
                 label: 'Salir',
-                accelerator: process.platform==='darwin' ? 'Command+Q' : 'Ctrl+Q',
-                click: () => {
+                accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+                click() {
                     app.quit();
                 }
             }
         ]
     }
 ];
-function crearVentanaAgregarProducto(){
-    ventanaNuevoProducto=new BrowserWindow({
-        //se dice que el padre es ventana principal
-        parent:ventanaPrincipal,
-        //no permite actuar con la ventana principal
-        modal:true,
-        width: 800,
-        heigth: 600,
+
+// Función para crear la ventana de agregar producto
+function crearVentanaAgregarProducto() {
+    ventanaNuevoProducto = new BrowserWindow({
+        parent: ventanaPrincipal,
+        modal: true,
+        width: 300,
+        height: 200,
         title: 'Agregar producto',
-        webPreferences:{
-            nodeIntegration:true
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false // Asegúrate de que contextIsolation esté deshabilitado para nodeIntegration
         }
     });
+
     ventanaNuevoProducto.loadFile('src/agregar-producto.html');
-    ventanaNuevoProducto.on('close', function(){
-        ventanaNuevoProducto=null;
+   // ventanaNuevoProducto.webContents.openDevTools(); // Abrir DevTools automáticamente
+
+    ventanaNuevoProducto.setMenu(null);
+
+    ventanaNuevoProducto.on('close', function () {
+        ventanaNuevoProducto = null;
     });
 }
-function crearVentanaPrincipal(){
-    ventanaPrincipal= new BrowserWindow({
+
+// Función para crear la ventana principal
+function crearVentanaPrincipal() {
+    ventanaPrincipal = new BrowserWindow({
         width: 800,
-        heigth: 600,
-        webPreferences:{
-            nodeIntegration:true
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false // Asegúrate de que contextIsolation esté deshabilitado para nodeIntegration
         }
     });
+
     ventanaPrincipal.loadFile('src/index.html');
-    let menuPrincipal=Menu.buildFromTemplate(menuPrincipalPLantilla);
+    //ventanaPrincipal.webContents.openDevTools(); // Abrir DevTools automáticamente
+
+    let menuPrincipal = Menu.buildFromTemplate(menuPrincipalPlantilla);
+    Menu.setApplicationMenu(menuPrincipal);
     ventanaPrincipal.setMenu(menuPrincipal);
 }
+
+// Crear la ventana principal cuando la aplicación esté lista
 app.whenReady().then(crearVentanaPrincipal);
+
+// Listener para manejar el evento de agregar producto desde el proceso principal
+ipcMain.on('producto:agregar', function (evento, nombreProducto) {
+    ventanaPrincipal.webContents.send('producto:agregar', nombreProducto);
+});
+
+// Cierra la aplicación cuando todas las ventanas estén cerradas (excepto en macOS)
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+// Vuelve a crear la ventana principal si la aplicación es activada y no hay ventanas abiertas (solo en macOS)
+app.on('activate', () => {
+    if (ventanaPrincipal === null) {
+        crearVentanaPrincipal();
+    }
+});
