@@ -46,7 +46,7 @@ function crearVentanaAgregarProducto() {
     });
 
     ventanaNuevoProducto.loadFile('src/agregar-producto.html');
-   // ventanaNuevoProducto.webContents.openDevTools(); // Abrir DevTools automáticamente
+    //ventanaNuevoProducto.webContents.openDevTools(); // Abrir DevTools automáticamente
 
     ventanaNuevoProducto.setMenu(null);
 

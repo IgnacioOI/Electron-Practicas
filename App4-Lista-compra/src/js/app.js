@@ -18,16 +18,26 @@ ipcRenderer.on('productos:eliminar', () => {
 
 // Función para cargar la lista de compras desde el localStorage
 function cargarListaCompras() {
-    // Genera el HTML de la lista de compras
-    let html = Object.keys(localStorage).map(k => `<div class="list-group-item">${localStorage.getItem(k)}</div>`).join('');
+    // Genera el HTML de la lista de compras, incluyendo un botón de eliminación
+    let html = Object.keys(localStorage).map(k => `
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            ${localStorage.getItem(k)}
+            <button class="btn btn-danger btn-sm borrar-btn">Borrar</button>
+        </div>`).join('');
+
     // Inserta el HTML generado en el contenedor de la lista de compras
     document.getElementById('listaCompras').innerHTML = html;
+
+    // Añade event listeners a todos los botones de eliminar
+    document.querySelectorAll('.borrar-btn').forEach(button => {
+        button.addEventListener('click', eliminarProducto);
+    });
 }
 
 // Función para manejar el evento de eliminar un producto
 function eliminarProducto(evento) {
     // Obtiene el nombre del producto a eliminar
-    let nombreProducto = evento.target.innerText;
+    let nombreProducto = evento.target.parentElement.firstChild.textContent.trim();
     // Elimina el producto del localStorage
     localStorage.removeItem(nombreProducto);
     // Recarga la lista de compras
@@ -40,9 +50,6 @@ document.addEventListener('keydown', (e) => {
         remote.getCurrentWindow().webContents.openDevTools();
     }
 });
-
-// Agrega un listener para manejar el evento de doble clic en la lista de compras
-document.querySelector('#listaCompras').addEventListener('dblclick', eliminarProducto);
 
 // Carga la lista de compras al iniciar
 cargarListaCompras();
