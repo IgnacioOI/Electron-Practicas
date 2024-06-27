@@ -78,7 +78,9 @@ function crearVentanaPrincipal() {
 app.whenReady().then(crearVentanaPrincipal);
 
 // Listener para manejar el evento de agregar producto desde el proceso principal
+// Se recibe el mensaje 'producto:agregar' enviado desde el proceso de renderizado
 ipcMain.on('producto:agregar', function (evento, nombreProducto) {
+    // Envía el mensaje 'producto:agregar' al proceso de renderizado
     ventanaPrincipal.webContents.send('producto:agregar', nombreProducto);
 });
 
