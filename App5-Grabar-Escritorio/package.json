@@ -1,0 +1,14 @@
+{
+  "name": "app5-grabar-escritorio",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^31.1.0"
+  }
+}
