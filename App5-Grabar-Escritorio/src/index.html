@@ -1,45 +1,34 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-
-    <title>Grabar Vídeo App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Grabar Vídeo App</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'">
 </head>
-
 <body>
-    <br>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-header text-center">
-                    <h1>
-                        Grabar Escritorio App
-                    </h1>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header text-center">
+          <h1>Grabar Escritorio App</h1>
         </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <video id="visualizacionCaptura"></video>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <button type="button" id="seleccionarFuenteVideo" class="btn btn-primary">Seleccionar fuente</button>
-                <button type="button" id="grabar" class="btn btn-danger" disabled>Grabar</button>
-                <button type="button" id="detener" class="btn btn-warning" disabled>Detener</button>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <script src="js/renderer.js"></script>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <video id="visualizacionCaptura" autoplay></video>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button type="button" id="grabar" class="btn btn-danger">Grabar</button>
+        <button type="button" id="detener" class="btn btn-warning" disabled>Detener</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/renderer.js"></script>
 </body>
-
 </html>
