@@ -1,0 +1,17 @@
+{
+  "name": "app5-generador-hashes",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^31.1.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}
